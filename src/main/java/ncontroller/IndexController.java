@@ -1,10 +1,8 @@
 package ncontroller;
 
-import java.net.Authenticator.RequestorType;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,7 +66,7 @@ public class IndexController {
 		}
 	}
 	
-	@RequestMapping(value= "memberedit.htm", method=RequestMethod.GET)
+	@RequestMapping(value= "empedit.htm", method=RequestMethod.GET)
 	public String Edit(String empno, Model model) {
 		Emp empedit = null;
 				
@@ -82,7 +80,7 @@ public class IndexController {
 		return "home.empedit";
 	}
 	
-	@RequestMapping(value= "memberedit.htm", method=RequestMethod.POST)
+	@RequestMapping(value= "empedit.htm", method=RequestMethod.POST)
 	public String Edit(Emp e) {
 		try {
 			Empdao empdao = sqlsession.getMapper(Empdao.class);
@@ -94,6 +92,18 @@ public class IndexController {
 		return "redirect:list.htm";
 	}
 	
+	@RequestMapping("empdelete.htm")
+	public String delete(String empno) {
+		try {
+			Empdao empdao = sqlsession.getMapper(Empdao.class);
+			empdao.deleteEmp(empno);
+		} catch (Exception ex) {
+			// TODO: handle exception
+		}
+		
+		
+		return "redirect:list.htm";
+	}
 		
 
 }

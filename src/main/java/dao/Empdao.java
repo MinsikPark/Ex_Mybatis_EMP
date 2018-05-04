@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import vo.Emp;
 
 public interface Empdao {
-	//public int deleteEmp();
+	public int deleteEmp(String empno);
 	//public int insertEmp();
 	public Emp emp_search(String src_empno);
 	//public ArrayList<String> get_deptnames();
