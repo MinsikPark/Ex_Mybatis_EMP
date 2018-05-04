@@ -47,20 +47,24 @@ public class IndexController {
 
 	@RequestMapping("selectbyempno.htm")
 	public String selectByEmpno(String src_empno, Model model) {
-		System.out.println(src_empno);
+		System.out.println("src "+src_empno);
 		List<Emp> list = null;
-		String path =null;
+		Emp emp = null;
+
+		
 		try {
 			Empdao empdao = sqlsession.getMapper(Empdao.class);
-			list = new ArrayList<Emp>();
-			list.add(empdao.emp_search(src_empno));			
+			emp = empdao.emp_search(src_empno);
 		} catch (Exception e) {
 
 		}
-		
-		if(list.isEmpty() || list ==null) {
+
+		if(emp==null) {
+			System.out.println("여기");
 			return "redirect:list.htm";
 		}else {
+			list = new ArrayList<Emp>();
+			list.add(emp);			
 			model.addAttribute("list", list);
 			return "home.emplist";
 		}
@@ -102,6 +106,18 @@ public class IndexController {
 		}
 		
 		
+		return "redirect:list.htm";
+	}
+	
+	@RequestMapping("empinsert.htm")
+	public String insert(Emp e) {
+		System.out.println(e.toString());
+		try {
+			Empdao empdao = sqlsession.getMapper(Empdao.class);
+			empdao.insertEmp(e);
+		} catch (Exception ex) {
+			// TODO: handle exception
+		}
 		return "redirect:list.htm";
 	}
 		

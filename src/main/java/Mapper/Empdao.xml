@@ -27,4 +27,27 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<delete id ="deleteEmp">
 		delete from emp where empno=#{empno}
 	</delete>
+	<insert id = "insertEmp">
+	
+			insert into emp(empno,
+	                    ename,
+	                    job,
+	                    mgr,
+	                    hiredate,
+	                    sal,
+	                    comm,
+	                    deptno)
+	        values(
+	            #{empno},
+	            #{ename},
+	            #{job},
+	            #{mgr},
+	            sysdate,
+	            #{sal},
+	            #{comm},
+	            #{deptno}
+	            )
+	</insert>
+	
+	
 </mapper>

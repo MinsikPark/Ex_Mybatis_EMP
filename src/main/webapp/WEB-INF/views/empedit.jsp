@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="emp" value="${empedit}"></c:set>
-	<div class="container">
+	<div class="container" >
 		<div class="card card-register mx-auto mt-5">
 			<div class="card-header">추가하기</div>
 			<div class="card-body">

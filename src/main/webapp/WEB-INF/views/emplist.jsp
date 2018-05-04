@@ -9,7 +9,9 @@
 				<input type="text" id="src_empno" name="src_empno">
 				<input type ="submit" value = "검색">			
 			</form>	
-		<input class="btn btn-primary" type="button" id="emp_btn" value="전체검색">
+			<a href="list.htm">
+				<input class="btn btn-primary" type="button" id="emp_btn" value="전체검색">		
+			</a>
 		<input class="btn btn-primary" data-toggle="modal"
 			data-target="#myModal1" type="button" id="mamodal1" value="추가">
 
@@ -23,10 +25,10 @@
 			</div>
 
 			<div class="card-body">
-				<div class="table-responsive" id="targetdiv">
-					<div align=center>
-						<h2>Line Memo List</h2>
-						<table style="width:100%" border=>
+				<div class="table-responsive" id="targetdiv" >
+					<div align="center">
+						<h2>EMP LIST</h2>
+						<table style="width:100%" class = "table table-striped">
 							<tr>
 								<th>EMPNO</th>
 								<th>ENAME</th>
@@ -36,6 +38,8 @@
 								<th>SAL</th>
 								<th>COMM</th>
 								<th>DEPTNO</th>
+								<th></th>
+								<th></th>
 							</tr>
 							<c:forEach var="emp" items="${list}">
 								<tr>
@@ -47,8 +51,8 @@
 									<td>${emp.sal}</td>
 									<td>${emp.comm}</td>
 									<td>${emp.deptno}</td>
-									<td><a href="empedit.htm?empno=${emp.empno}">[수정]</a></td>
-									<td><a href="empdelete.htm?empno=${emp.empno}">[삭제]</a></td>
+									<td><a href="empedit.htm?empno=${emp.empno}"><button class= "btn btn-default" value ="EDIT">EDIT</button></a></td>
+									<td><a href="empdelete.htm?empno=${emp.empno}"><button class= "btn btn-default" value ="DELETE">DELETE</button></a></td>
 
 								</tr>
 							</c:forEach>
@@ -73,7 +77,7 @@
 			<div class="modal-header">
 				<h4 class="modal-title">Sign Up</h4>
 			</div>
-			<form action="EmpInsertServlet">
+			<form action="empinsert.htm">
 				<div class="form-group">
 					<div class="form-row">
 						<div class="col-md-6">
