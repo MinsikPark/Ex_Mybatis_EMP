@@ -11,5 +11,5 @@ public interface Empdao {
 	//public ArrayList<String> get_deptnames();
 	//public ArrayList<Emp> dept_search();
 	public ArrayList<Emp> getEmpList();
-	//public int updateemp(); 
+	public int updateemp(Emp e); 
 }

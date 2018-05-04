@@ -1,13 +1,17 @@
 package ncontroller;
 
+import java.net.Authenticator.RequestorType;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import dao.Empdao;
 import vo.Emp;
@@ -63,5 +67,33 @@ public class IndexController {
 			return "home.emplist";
 		}
 	}
+	
+	@RequestMapping(value= "memberedit.htm", method=RequestMethod.GET)
+	public String Edit(String empno, Model model) {
+		Emp empedit = null;
+				
+		try {
+			Empdao empdao = sqlsession.getMapper(Empdao.class);
+			empedit = empdao.emp_search(empno);
+			model.addAttribute("empedit",empedit);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return "home.empedit";
+	}
+	
+	@RequestMapping(value= "memberedit.htm", method=RequestMethod.POST)
+	public String Edit(Emp e) {
+		try {
+			Empdao empdao = sqlsession.getMapper(Empdao.class);
+			empdao.updateemp(e);
+		} catch (Exception ex) {
+			// TODO: handle exception
+		}
+		
+		return "redirect:list.htm";
+	}
+	
+		
 
 }

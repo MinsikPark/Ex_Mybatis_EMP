@@ -47,7 +47,7 @@
 									<td>${emp.sal}</td>
 									<td>${emp.comm}</td>
 									<td>${emp.deptno}</td>
-									<td><a href="memberedit?empno=${emp.empno}">[수정]</a></td>
+									<td><a href="memberedit.htm?empno=${emp.empno}">[수정]</a></td>
 									<td><a href="memberdelete?empno=${emp.empno}">[삭제]</a></td>
 
 								</tr>
