@@ -14,8 +14,8 @@ import vo.Emp;
 @Controller
 public class IndexController {
 	
-		@Autowired
-		private SqlSession sqlsession;
+//		@Autowired
+//		private SqlSession sqlsession;
 		
 		@RequestMapping("/index.htm")
 		public String index() {
@@ -29,9 +29,9 @@ public class IndexController {
 			List<Emp> list = null;
 			
 			try {
-				Empdao empdao =sqlsession.getMapper(Empdao.class);
+			/*	Empdao empdao =sqlsession.getMapper(Empdao.class);
 				list = empdao.getEmpList();
-				model.addAttribute("list", list);
+				model.addAttribute("list", list);*/
 			} catch (Exception e) {
 				// TODO: handle exception
 			}
