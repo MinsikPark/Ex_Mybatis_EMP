@@ -1,1 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<!-- 
+	public int deleteEmp();
+	public int insertEmp();
+	public Emp emp_search();
+	public ArrayList<String> get_deptnames();
+	public ArrayList<Emp> dept_search();
+	public ArrayList<Emp> getEmpList();
+	public int updateemp(); 
+
+ -->
+<mapper namespace="dao.Empdao">
+	<select id = "getEmpList" resultType="vo.Emp">
+		select empno,ename,job,mgr,hiredate,sal,comm,deptno from emp"
+	</select>
+</mapper>

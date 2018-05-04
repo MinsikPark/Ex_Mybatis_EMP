@@ -20,7 +20,13 @@
 			</div>
 
 			<div class="card-body">
-				<div class="table-responsive" id="targetdiv"></div>
+				<div class="table-responsive" id="targetdiv">
+					<table>
+						<thead>
+						
+						</thead>
+					</table>
+				</div>
 				<!-- end - targetdiv -->
 			</div>
 
