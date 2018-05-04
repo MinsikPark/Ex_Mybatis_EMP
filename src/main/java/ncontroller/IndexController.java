@@ -15,8 +15,8 @@ public class IndexController {
 		}
 		
 		@RequestMapping("/list.htm")
-		public String allEmpList(String empno, Model model) {
-			System.out.println("emp : " + empno);
+		public String allEmpList(Model model) {
+			
 			System.out.println("list.htm");
 			return "home.emplist";
 		}
