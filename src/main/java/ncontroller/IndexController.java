@@ -1,5 +1,6 @@
 package ncontroller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -29,20 +30,38 @@ public class IndexController {
 		List<Emp> list = null;
 
 		try {
+			System.out.println(sqlsession.toString());
 			Empdao empdao = sqlsession.getMapper(Empdao.class);
 			list = empdao.getEmpList();
 			model.addAttribute("list", list);
 		} catch (Exception e) {
-			// TODO: handle exception
+			System.out.println("exception");
+			e.printStackTrace();
 		}
-
-		System.out.println("list.htm");
+		
+		
 		return "home.emplist";
 	}
 
-	@RequestMapping()
-	public String selectByEmpno(String empno) {
-		return "home.emplist";
+	@RequestMapping("selectbyempno.htm")
+	public String selectByEmpno(String src_empno, Model model) {
+		System.out.println(src_empno);
+		List<Emp> list = null;
+		String path =null;
+		try {
+			Empdao empdao = sqlsession.getMapper(Empdao.class);
+			list = new ArrayList<Emp>();
+			list.add(empdao.emp_search(src_empno));			
+		} catch (Exception e) {
+
+		}
+		
+		if(list.isEmpty() || list ==null) {
+			return "redirect:list.htm";
+		}else {
+			model.addAttribute("list", list);
+			return "home.emplist";
+		}
 	}
 
 }

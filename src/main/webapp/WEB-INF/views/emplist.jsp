@@ -1,18 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div class="content-wrapper">
 	<div class="container-fluid">
 
-		사번으로 검색 : <input type="text" id="search_empno"> <input
-			class="btn btn-primary" type="button" id="empno_btn" value="검색">
+		사번으로 검색 : 
+			<form action="selectbyempno.htm">
+				<input type="text" id="src_empno" name="src_empno">
+				<input type ="submit" value = "검색">			
+			</form>	
 		<input class="btn btn-primary" type="button" id="emp_btn" value="전체검색">
 		<input class="btn btn-primary" data-toggle="modal"
 			data-target="#myModal1" type="button" id="mamodal1" value="추가">
 
-		<br>
-		<br> 부서번호로 검색 : <select name="deptno" id="search_deptno">
-		</select> <br>
-		<br>
+		<br> <br> 부서번호로 검색 : <select name="deptno"
+			id="search_deptno">
+		</select> <br> <br>
 
 		<div class="card mb-3">
 			<div class="card-header">
@@ -21,11 +24,36 @@
 
 			<div class="card-body">
 				<div class="table-responsive" id="targetdiv">
-					<table>
-						<thead>
-						
-						</thead>
-					</table>
+					<div align=center>
+						<h2>Line Memo List</h2>
+						<table style="width:100%" border=>
+							<tr>
+								<th>EMPNO</th>
+								<th>ENAME</th>
+								<th>JOB</th>
+								<th>MGR</th>
+								<th>HIREDATE</th>
+								<th>SAL</th>
+								<th>COMM</th>
+								<th>DEPTNO</th>
+							</tr>
+							<c:forEach var="emp" items="${list}">
+								<tr>
+									<td>${emp.empno}</td>
+									<td>${emp.ename}</td>
+									<td>${emp.job}</td>
+									<td>${emp.mgr}</td>
+									<td>${emp.hiredate}</td>
+									<td>${emp.sal}</td>
+									<td>${emp.comm}</td>
+									<td>${emp.deptno}</td>
+									<td><a href="memberedit?empno=${emp.empno}">[수정]</a></td>
+									<td><a href="memberdelete?empno=${emp.empno}">[삭제]</a></td>
+
+								</tr>
+							</c:forEach>
+						</table>
+					</div>
 				</div>
 				<!-- end - targetdiv -->
 			</div>
